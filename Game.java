@@ -6,50 +6,70 @@ public class Game {
 	public static final int NO_PLAY = 1;
 	public static final int  Ladder = 2;
 	public static final int  Snake = 3;
+	
+	public static int count = 0;
+	public static int die_number = 0;
+	public static Random rand = new Random();
+	
+	public static int play(int position)
+	{
+		if(position < 0)
+		{
+			position = 0;
+		}
+	
+		die_number = rand.nextInt(7-1)+1;
+		count++;
+		System.out.println("die number:"+die_number);
+	
+		int option=rand.nextInt(4-1)+1;
+		switch(option)
+		{
+		    case NO_PLAY: System.out.println("NO PLAY");
+			              break;
+			case Ladder : position += die_number;
+						  System.out.println("Inclined by "+die_number);
+						  position=play(position);
+			              break;
+			case Snake  : position-=die_number;
+						  System.out.println("Declined by "+die_number);
+			              break;
+		}
+		if(position>100)
+		{
+			position -= die_number;
+		}
+		return position;
+	}
+	
 
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to the Game");
+		System.out.println("Welcome to Game");
 		
-		int pos = 0;
-		int count = 0;
+		int person1position = 0,person2position = 0;
 		
-		Random rand = new Random();
 		
-		while(pos != 100) {
-		int die_number = rand.nextInt(7-1)+1;
-		System.out.println("Die Number :"+die_number);
-		
-		int choice = rand.nextInt(4-1)+1;
-				
-		switch(choice) 
+		while(person1position !=100 && person2position != 100)
 		{
-		        case NO_PLAY : System.out.println("NO PLAY");
-					           break;
-				case Ladder  : System.out.println("You inclined by "+die_number+" current position is "+pos);
-				               pos+=die_number;
-				               break;
-				case Snake   : System.out.println("You declined by "+die_number+" current position is"+pos); 
-					           pos-=die_number;
-							   break;
+			System.out.println("Person1 is playing");
+			person1position = play(person1position);
+			System.out.println("position of person 1 "+person1position);
+			System.out.println("Person2 is playing");
+			person2position = play(person2position);
+			System.out.println("position of person 2 "+person2position);	
 		}
 		
-		if(pos < 0) {
-			pos=0;
+		if(person1position == 100)
+		{
+			System.out.println("Person 1 has won the match");
+		}
+		else
+		{
+			System.out.println("Person 2 has won the match!!!!");
+		}
+		System.out.println("Dice has been rolled "+count+" times");
 		}
 		
-		if(pos > 100) {
-			pos-=die_number;
-			
-		}
 		
-		count++;
-		
-		}
-		
-		System.out.println("\n\nYour position is "+ pos);
-		System.out.println("Number of times the dice throwed is:"+count);
-
 	}
-
-}
