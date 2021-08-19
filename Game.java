@@ -2,7 +2,7 @@ package SnakeAndLadder;
 
 import java.util.Random;
 public class Game {
-	
+
 	public static final int NO_PLAY = 1;
 	public static final int  Ladder = 2;
 	public static final int  Snake = 3;
