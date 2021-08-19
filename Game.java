@@ -1,8 +1,9 @@
 package SnakeAndLadder;
 
 import java.util.Random;
-public class Game {
 
+public class Game {
+	
 	public static final int NO_PLAY = 1;
 	public static final int  Ladder = 2;
 	public static final int  Snake = 3;
@@ -14,8 +15,11 @@ public class Game {
 		int pos = 0;
 		
 		Random rand = new Random();
+		
+		while(pos != 100) {
 		int die_number = rand.nextInt(7-1)+1;
 		System.out.println("Die Number :"+die_number);
+		
 		
 		int choice = rand.nextInt(4-1)+1;
 				
@@ -29,6 +33,12 @@ public class Game {
 				case Snake   : System.out.println("You declined by "+die_number+" current position is"+pos); 
 					           pos-=die_number;
 							   break;
+		}
+		
+		if(pos < 0) {
+			pos=0;
+		}
+		
 		}
 
 	}
