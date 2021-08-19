@@ -1,13 +1,8 @@
 package SnakeAndLadder;
 
 import java.util.Random;
-
 public class Game {
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> UC5
 	public static final int NO_PLAY = 1;
 	public static final int  Ladder = 2;
 	public static final int  Snake = 3;
@@ -17,13 +12,14 @@ public class Game {
 		System.out.println("Welcome to the Game");
 		
 		int pos = 0;
+		int count = 0;
 		
 		Random rand = new Random();
 		
 		while(pos != 100) {
 		int die_number = rand.nextInt(7-1)+1;
 		System.out.println("Die Number :"+die_number);
-		 
+		
 		int choice = rand.nextInt(4-1)+1;
 				
 		switch(choice) 
@@ -47,7 +43,12 @@ public class Game {
 			
 		}
 		
+		count++;
+		
 		}
+		
+		System.out.println("\n\nYour position is "+ pos);
+		System.out.println("Number of times the dice throwed is:"+count);
 
 	}
 
